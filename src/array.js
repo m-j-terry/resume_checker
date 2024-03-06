@@ -1,0 +1,3 @@
+const buzzWords = ['react', 'reactjs', 'node', 'nodejs', 'html', 'html5', 'css', 'css3', 'javascript', 'js', 'responsive', 'vue', 'vuejs', 'next', 'nextjs', 'angular', 'angularjs', 'backbone', 'backbonejs', 'front', 'back', 'frontend', 'backend', 'fullstack', 'full', 'mern', 'mernstack', 'ai', 'python', 'typescript', 'ts', 'py', 'restful', 'api', 'webpack', 'java', 'vite', 'loadtesting', 'load', 'testing', 'test', 'tests', 'objectoriented', 'object', 'oriented', 'programming', 'objectorientedprogramming', "oop", 'mongoose', 'mongodb', 'express', "sql", "mysql", "postgres", "postgresql", "django", "docker", 'ruby', "rubyonrails", "golang", "C", "C++", "devops", "linux", "perl", "php"]
+
+module.exports = buzzWords

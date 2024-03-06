@@ -1,0 +1,1 @@
+const buzzWords = require('../array')
