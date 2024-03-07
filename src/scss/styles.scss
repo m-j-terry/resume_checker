@@ -26,11 +26,45 @@ body {
   }
 }
 
-.HomePage {
+.InputPage {
+  display: flex; 
+  align-items:center;
+  flex-direction: column;
   h1 {
     font-size: 3rem;
   }
-
+  h2 {
+    font-size: 2rem;
+  }
+  form {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  button{
+    .resultsLink{
+      color: black;
+    }
+    .resultsLink:hover {
+      text-decoration:none;
+      cursor:default;
+    }
+    height:2rem;
+    width:5rem;
+    border-color: rgb(240, 240, 240);
+    background-color:white;
+    box-shadow:  2px 2px grey;
+  }
+  button:hover{
+    .resultsLink{
+      text-transform:uppercase;
+      color: white;
+    }
+    height: 2.5rem;
+    width:6rem;
+    color: white;
+    background-color:black;
+  }
 }
 
 .AboutPage {
@@ -39,16 +73,74 @@ body {
   }
 }
 
-.ContactPage{
+.ResultsPage{
   h1 {
     font-size: 3rem;
   }
 
 }
 
-.AppPage {
-  h1 {
-    font-size: 3rem;
+.FormInputComponent {
+  display: flex; 
+  flex-direction:column;
+  textarea {
+    font-size: 1rem;
   }
+}
 
+@keyframes zoom {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+$durations: 2s, 3s, 4s, 5s, 6s;
+$delay-starts: 1s, 2s, 3s, 4s;
+$size: 4vmin, 6vmin, 8vmin, 10vmin, 12vmin;
+$position-top: 5vh, 10vh, 15vh, 20vh, 25vh, 30vh, 35vh, 40vh, 45vh, 50vh, 55vh, 60vh, 65vh, 70vh, 75vh, 80vh, 85vh, 90vh, 95vh;
+$position-left: 5vw, 10vw, 15vw, 20vw, 25vw, 30vw, 35vw, 40vw, 45vw, 50vw, 55vw, 60vw, 65vw, 70vw, 75vw, 80vw, 85vw, 90vw, 95vw;
+
+
+@function random-value($list) {
+  @return nth($list, random(length($list)));
+}
+
+@mixin animate-words($num-words) {
+  @for $i from 1 through $num-words {
+    $animation-duration: random-value($durations);
+    $animation-delay-start: random-value($delay-starts);
+    $font-size: random-value($size);
+    .word:nth-child(#{$i}) {
+      font-size: $font-size;
+      animation: zoom $animation-duration linear infinite;
+      position: absolute;
+      top: random-value($position-top);
+      left: random-value($position-left);
+    }
+  }
+}
+
+.BackgroundComponent {
+  background: rgb(250, 250, 233);
+  width:100vw;
+  height:100vh;
+  position:fixed;
+  top: 0; left: 0;
+  z-index: -1;
+  @include animate-words(66); 
+
+  .word {
+    color: grey;
+  }
+}
+
+form {
+  margin:auto;
+  justify-content: center;
 }

@@ -23,8 +23,7 @@ function resumeChecker(description, resume) {
     const missingWords = unBuzzedWords.join(', ')
     console.log('percentage match is ' + percentage + '%')
     console.log('missing buzz words include: ' + missingWords)
-    // results.append(`percentage match is ${percentage}%`)
-    // results.append(document.createElement('br'))
-    // results.append(`missing buzz words include: ${missingWords}`)
     return `percentage match is ${percentage}% and missing buzz words include: ${missingWords}`
 }
+
+module.exports = resumeChecker

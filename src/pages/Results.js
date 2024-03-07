@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import Background from '../components/Backround'
 
-export default function Contact(props) {
+export default function Results(props) {
 	return(
-		<div className="ContactPage">
+		<div className="ResultsPage">
+			<Background />
 			<center>
 			<h1>This is the {props.page} page</h1>
 			<div>

@@ -1,16 +1,16 @@
 import About from '../pages/About';
-import Home from '../pages/Home';
-import Contact from '../pages/Contact';
+import Results from '../pages/Results';
+import Input from '../pages/Input';
 
 const routes = [
 	{
-		Component: Contact,
-		key: 'Contact',
-		path: '/contact'
+		Component: Results,
+		key: 'Results',
+		path: '/results'
 	},
 	{
-		Component: Home,
-		key: 'Home',
+		Component: Input,
+		key: 'Input',
 		path: '/'
 	},
 	{

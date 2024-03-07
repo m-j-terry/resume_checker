@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import Background from '../components/Backround'
+
 
 export default function About(props) {
 	return(
 		<div className="AboutPage">
+			<Background />
 			<center>
 			<h1>This is the {props.page} page</h1>
 			<div>
