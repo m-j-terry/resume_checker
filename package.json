@@ -11,6 +11,7 @@
     "build": "gulp build && gulp styles",
     "dev:webpack": "webpack --mode development --define-process-env-node-env dev",
     "build:webpack": "webpack --mode production --define-process-env-node-env production",
+    "build:webpackgulp": "gulp && webpack --mode production",
     "dev": "gulp",
     "styles": "gulp styles",
     "start": "node server.js"
