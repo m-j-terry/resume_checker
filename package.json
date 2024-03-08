@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build && gulp styles",
     "dev:webpack": "webpack --mode development --define-process-env-node-env dev",
-    "build:webpack": "webpack --mode production netlify link netlify deploy --prod netlify open",
+    "build:webpack": "webpack --mode production",
     "build:webpackgulp": "gulp && webpack --mode production",
     "dev": "gulp",
     "styles": "gulp styles",
