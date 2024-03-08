@@ -7,12 +7,16 @@ export default function About(props) {
 		<div className="AboutPage">
 			<Background />
 			<center>
-			<h1>This is the {props.page} page</h1>
+			<h1>about me</h1>
 			<div>
-				<img src="https://media.git.generalassemb.ly/user/15881/files/8b5cd280-1f37-11ea-9c27-c9bb294aa61f"/>
+				<p>My name is Michael. I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. <br />I recently completed General Assembly's SEI Intensive Bootcamp, </p>
+
+				<p>Follow me on github and connect with me on Linkedin! Want to see more of my projects? Check out my portfolio!</p>
+				<div className="socials">
+						<p><a href="https://github.com/m-j-terry"><img className='thumbnail' id='github' src="https://pngimg.com/d/github_PNG32.png"></img></a></p>
+						<p><a href="https://portfolio-mjterry.netlify.app/"><img className='thumbnail' id='portfolio' src='https://portfolio-mjterry.netlify.app/assets/logo-black-5b2b3903.png'></img></a></p>
+						<p><a href="https://www.linkedin.com/in/michaeljterry/"><img className='thumbnail' src="https://www.pngall.com/wp-content/uploads/2016/07/Linkedin-Download-PNG.png"></img></a></p>
 				</div>
-				<div>
-				<img src="https://lh4.googleusercontent.com/Wp6jVNMlvYa2Q8BZ6kIzCbbasfZmNSaWIBJjLKEIDzYB9O6skIt3zyrpqPUjTSXG9WQF23WihWl43h_9UHZtugB96EAulCDDqNtB-KtWYWXJbTTMgHGrG7WU881GACAsrZXe8pJlux6xqGlB46AQliYn=s2048"/>
 			</div>			
 			</center>
 		</div>

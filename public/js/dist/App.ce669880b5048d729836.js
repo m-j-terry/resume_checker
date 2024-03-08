@@ -12,6 +12,49 @@ module.exports = buzzWords;
 
 /***/ }),
 
+/***/ "./src/check-resume.js":
+/*!*****************************!*\
+  !*** ./src/check-resume.js ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const buzzWords = __webpack_require__(/*! ./array */ "./src/array.js");
+function resumeChecker(description, resume) {
+  if (resume !== String && description !== String) return 'error';
+  let res = resume.toLowerCase().split(' ');
+  let des = description.toLowerCase().split(' ');
+  const resBuzzedWords = [];
+  const desBuzzedWords = [];
+  const unBuzzedWords = [];
+  for (let i = 0; i < buzzWords.length; i++) {
+    if (des.includes(buzzWords[i]) === true) {
+      desBuzzedWords.push(buzzWords[i]);
+    }
+  }
+  for (let i = 0; i < desBuzzedWords.length; i++) {
+    if (res.includes(desBuzzedWords[i]) === true) {
+      resBuzzedWords.push(desBuzzedWords[i]);
+    } else {
+      unBuzzedWords.push(desBuzzedWords[i]);
+    }
+  }
+  let percentage = Math.round(resBuzzedWords.length / desBuzzedWords.length * 100);
+  const missingWords = unBuzzedWords.join(', ');
+  console.log('percentage match is ' + percentage + '%');
+  console.log('missing buzz words include: ' + missingWords);
+  let result = {
+    Resume: resume,
+    Description: description,
+    Percentage: percentage,
+    MissingWords: missingWords
+  };
+  // return `percentage match is ${percentage}% and missing buzz words include: ${missingWords}`
+  return result;
+}
+module.exports = resumeChecker;
+
+/***/ }),
+
 /***/ "./src/components/Backround.js":
 /*!*************************************!*\
   !*** ./src/components/Backround.js ***!
@@ -85,6 +128,7 @@ function FormInput(props) {
     return /*#__PURE__*/React.createElement("div", {
       className: "FormInputComponent"
     }, /*#__PURE__*/React.createElement("label", {
+      className: "label",
       htmlFor: id
     }, label), /*#__PURE__*/React.createElement("textarea", _extends({
       id: id
@@ -112,27 +156,18 @@ function FormInput(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-
 const NavBar = props => {
-  const [routes, setRoutes] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    let updatedRoutes = props.routes;
-    updatedRoutes.length === 3 ? updatedRoutes.shift() : console.log(updatedRoutes.length);
-    setRoutes(updatedRoutes);
-  }, []);
   return /*#__PURE__*/React.createElement("nav", {
     className: "NavBar"
-  }, routes.map(_ref => {
+  }, props.routes.map(_ref => {
     let {
       key,
       path
     } = _ref;
-    return /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    return /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__.Link, {
       key: key,
       to: path
     }, key);
@@ -181,11 +216,26 @@ root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__
 function About(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "AboutPage"
-  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "This is the ", props.page, " page"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "https://media.git.generalassemb.ly/user/15881/files/8b5cd280-1f37-11ea-9c27-c9bb294aa61f"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "https://lh4.googleusercontent.com/Wp6jVNMlvYa2Q8BZ6kIzCbbasfZmNSaWIBJjLKEIDzYB9O6skIt3zyrpqPUjTSXG9WQF23WihWl43h_9UHZtugB96EAulCDDqNtB-KtWYWXJbTTMgHGrG7WU881GACAsrZXe8pJlux6xqGlB46AQliYn=s2048"
-  }))));
+  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "about me"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "My name is Michael. I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. ", /*#__PURE__*/React.createElement("br", null), "I recently completed General Assembly's SEI Intensive Bootcamp, "), /*#__PURE__*/React.createElement("p", null, "Follow me on github and connect with me on Linkedin! Want to see more of my projects? Check out my portfolio!"), /*#__PURE__*/React.createElement("div", {
+    className: "socials"
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/m-j-terry"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "thumbnail",
+    id: "github",
+    src: "https://pngimg.com/d/github_PNG32.png"
+  }))), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://portfolio-mjterry.netlify.app/"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "thumbnail",
+    id: "portfolio",
+    src: "https://portfolio-mjterry.netlify.app/assets/logo-black-5b2b3903.png"
+  }))), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.linkedin.com/in/michaeljterry/"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "thumbnail",
+    src: "https://www.pngall.com/wp-content/uploads/2016/07/Linkedin-Download-PNG.png"
+  })))))));
 }
 
 /***/ }),
@@ -202,9 +252,10 @@ function About(props) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _components_FormInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FormInput */ "./src/components/FormInput.js");
 /* harmony import */ var _components_Backround__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Backround */ "./src/components/Backround.js");
+/* harmony import */ var _check_resume__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../check-resume */ "./src/check-resume.js");
+/* harmony import */ var _check_resume__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_check_resume__WEBPACK_IMPORTED_MODULE_3__);
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -219,10 +270,21 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
 
 function Input(props) {
-  const [values, setValues] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    jobDescription: '',
-    resume: ''
-  });
+  const [result, setResult] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  const [values, setValues] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setResult({
+      Resume: null,
+      Description: null,
+      Percentage: null,
+      MissingWords: null
+    });
+    console.log(result.Percentage);
+    setValues({
+      jobDescription: '',
+      resume: ''
+    });
+  }, []);
   const inputs = [{
     id: "job-description",
     name: "description",
@@ -248,35 +310,50 @@ function Input(props) {
   };
   const handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(function* (e) {
-      e.preventDefault();
-      let formData = new FormData();
-      console.log('values = ' + values);
-      for (let key in values) {
-        formData.append(key, values[key]);
-      }
-      console.log('formData = ' + formData);
+      // e.preventDefault()
+      // let formData = new FormData()
+      // console.log('values = ' + values)
+      // for (let key in values) {
+      //     formData.append(key, values[key])
+      // }
+      let checker = yield _check_resume__WEBPACK_IMPORTED_MODULE_3___default()(values.jobDescription, values.resume);
+      setResult(checker);
+      // console.log('formData = ' + formData)
     });
     return function handleSubmit(_x) {
       return _ref.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/React.createElement("div", {
-    className: "InputPage"
-  }, /*#__PURE__*/React.createElement("h1", null, "ATS Resume Checker"), /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h2", null, "Paste your resume check what percent it matches with the listing's job description."), /*#__PURE__*/React.createElement("form", {
-    action: "/resume",
-    method: "GET"
-  }, inputs.map(input => /*#__PURE__*/React.createElement(_components_FormInput__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
-    key: input.id
-  }, input, {
-    value: values[input.name],
-    handleInputChange: handleInputChange
-  })))), /*#__PURE__*/React.createElement("button", {
-    formMethod: "dialog"
-  }, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    className: "resultsLink",
-    key: "Results",
-    to: "/results"
-  }, "Submit"))));
+  if (!result.Percentage) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "InputPage"
+    }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("div", {
+      className: "opacity"
+    }, /*#__PURE__*/React.createElement("h1", {
+      className: "heading"
+    }, "ATS Resume Checker"), /*#__PURE__*/React.createElement("h2", {
+      className: "heading"
+    }, "Paste your resume check what percent it matches with the listing's job description.")), /*#__PURE__*/React.createElement("form", null, inputs.map(input => /*#__PURE__*/React.createElement(_components_FormInput__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      key: input.id
+    }, input, {
+      value: values[input.name],
+      handleInputChange: handleInputChange
+    })))), /*#__PURE__*/React.createElement("button", {
+      formMethod: "dialog",
+      onClick: handleSubmit()
+    }, "submit")));
+  } else {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "opacity"
+    }, /*#__PURE__*/React.createElement("h2", null, "Your resume is a ", props.result.Percentage, "% match to the job description."), props.result.Percentagercentage === 100 ? /*#__PURE__*/React.createElement("h2", null, "You're a great fit! Make sure to include a cover letter to take your application to the next level!") : /*#__PURE__*/React.createElement("h2", null, "These are the words that were missing in your resume: ", props.result.MissingWords, " ", /*#__PURE__*/React.createElement("br", null), "Update your resume to include these so that your resume goes even farther!"), /*#__PURE__*/React.createElement("p", null, "Ready to try another job description?"), /*#__PURE__*/React.createElement("button", {
+      onClick: setResult({
+        Resume: null,
+        Description: null,
+        Percentage: null,
+        MissingWords: null
+      })
+    }, "reset"));
+  }
 }
 
 /***/ }),
@@ -288,9 +365,7 @@ function Input(props) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Results)
-/* harmony export */ });
+/* unused harmony export default */
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Backround__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Backround */ "./src/components/Backround.js");
@@ -300,11 +375,9 @@ function Input(props) {
 function Results(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "ResultsPage"
-  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "This is the ", props.page, " page"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "https://media.git.generalassemb.ly/user/15881/files/8b5cd280-1f37-11ea-9c27-c9bb294aa61f"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "https://lh4.googleusercontent.com/Wp6jVNMlvYa2Q8BZ6kIzCbbasfZmNSaWIBJjLKEIDzYB9O6skIt3zyrpqPUjTSXG9WQF23WihWl43h_9UHZtugB96EAulCDDqNtB-KtWYWXJbTTMgHGrG7WU881GACAsrZXe8pJlux6xqGlB46AQliYn=s2048"
-  }))));
+  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, props.page), /*#__PURE__*/React.createElement("div", {
+    className: "opacity"
+  }, /*#__PURE__*/React.createElement("h2", null, "Your resume is a ", props.result.Percentage, "% match to the job description."), props.result.Percentagercentage === 100 ? /*#__PURE__*/React.createElement("h2", null, "You're a great fit! Make sure to include a cover letter to take your application to the next level!") : /*#__PURE__*/React.createElement("h2", null, "These are the words that were missing in your resume: ", props.result.MissingWords, " ", /*#__PURE__*/React.createElement("br", null), "Update your resume to include these so that your resume goes even farther!"))));
 }
 
 /***/ }),
@@ -366,10 +439,6 @@ const AppRouter = () => {
 
 
 const routes = [{
-  Component: _pages_Results__WEBPACK_IMPORTED_MODULE_1__["default"],
-  key: 'Results',
-  path: '/results'
-}, {
   Component: _pages_Input__WEBPACK_IMPORTED_MODULE_2__["default"],
   key: 'Input',
   path: '/'
@@ -548,4 +617,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.49874bfa3d13dc4e2d67a6f89f5245d4.js.map
+//# sourceMappingURL=App.dc2ae6b5abbeb8c802fb9d1c602fed31.js.map

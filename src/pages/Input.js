@@ -1,13 +1,27 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import FormInput from '../components/FormInput'
 import Background from '../components/Backround'
+import resumeChecker from '../check-resume'
 
 export default function Input(props) {
-	const [values, setValues] = useState({
-		jobDescription: '',
-		resume: ''
-	})
+	const [result, setResult] = useState({})
+
+	const [values, setValues] = useState({})
+
+	useEffect(() => {
+		setResult({
+			Resume: null,
+			Description: null,
+			Percentage: null,
+			MissingWords: null 
+		})
+		console.log(result.Percentage)
+		setValues({
+			jobDescription: '',
+			resume: ''
+		})
+	}, [])
+
 	const inputs = [
         {
             id: "job-description",
@@ -35,28 +49,42 @@ export default function Input(props) {
     }
 
 	const handleSubmit = async (e) => {
-        e.preventDefault()
-        
-        let formData = new FormData()
-        console.log('values = ' + values)
-        for (let key in values) {
-            formData.append(key, values[key])
-        }
-        console.log('formData = ' + formData)
+        // e.preventDefault()
+        // let formData = new FormData()
+        // console.log('values = ' + values)
+        // for (let key in values) {
+        //     formData.append(key, values[key])
+        // }
+		let checker = await resumeChecker(values.jobDescription, values.resume)
+		setResult(checker)
+        // console.log('formData = ' + formData)
 	}
+
+	if (!result.Percentage) {
 	return(
 		<div className="InputPage">
-			<h1>ATS Resume Checker</h1>
 			<Background />
 			<center>
-			<h2>Paste your resume check what percent it matches with the listing's job description.</h2>
-                <form action="/resume" method='GET'>
+				<div className="opacity">
+					<h1 className="heading">ATS Resume Checker</h1>
+					<h2 className="heading">Paste your resume check what percent it matches with the listing's job description.</h2>
+				</div>
+                <form>
 					{inputs.map(input => <FormInput key={input.id} {...input} value={values[input.name]} handleInputChange={handleInputChange} />)}
-					
                 </form>	
-				<button formMethod='dialog'><Link className="resultsLink" key="Results" to="/results" >Submit</Link></button>
+				<button formMethod='dialog' onClick={handleSubmit()}>submit</button>
 
 			</center>
 		</div>
 	) 
+	} else {
+		return(
+			<div className="opacity">
+				<h2>Your resume is a {props.result.Percentage}% match to the job description.</h2>
+				{props.result.Percentagercentage === 100 ? <h2>You're a great fit! Make sure to include a cover letter to take your application to the next level!</h2> : <h2>These are the words that were missing in your resume: {props.result.MissingWords} <br />Update your resume to include these so that your resume goes even farther!</h2>}
+				<p>Ready to try another job description?</p>
+				<button onClick={setResult({ Resume: null, Description: null, Percentage: null, MissingWords: null })}>reset</button>
+			</div>	
+		)
+	}
 }

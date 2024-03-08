@@ -28,7 +28,7 @@ export default function FormInput(props) {
     } else {
         return (
             <div className="FormInputComponent">
-                <label htmlFor={id}>{label}</label>
+                <label  className="label" htmlFor={id}>{label}</label>
                 <textarea
                     id={id}
                     {...inputProps}

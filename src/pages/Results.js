@@ -6,12 +6,10 @@ export default function Results(props) {
 		<div className="ResultsPage">
 			<Background />
 			<center>
-			<h1>This is the {props.page} page</h1>
-			<div>
-				<img src="https://media.git.generalassemb.ly/user/15881/files/8b5cd280-1f37-11ea-9c27-c9bb294aa61f"/>
-				</div>
-				<div>
-				<img src="https://lh4.googleusercontent.com/Wp6jVNMlvYa2Q8BZ6kIzCbbasfZmNSaWIBJjLKEIDzYB9O6skIt3zyrpqPUjTSXG9WQF23WihWl43h_9UHZtugB96EAulCDDqNtB-KtWYWXJbTTMgHGrG7WU881GACAsrZXe8pJlux6xqGlB46AQliYn=s2048"/>
+			<h1>{props.page}</h1>
+			<div className="opacity">
+				<h2>Your resume is a {props.result.Percentage}% match to the job description.</h2>
+				{props.result.Percentagercentage === 100 ? <h2>You're a great fit! Make sure to include a cover letter to take your application to the next level!</h2> : <h2>These are the words that were missing in your resume: {props.result.MissingWords} <br />Update your resume to include these so that your resume goes even farther!</h2>}
 			</div>			
 			</center>
 		</div>

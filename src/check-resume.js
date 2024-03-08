@@ -1,7 +1,7 @@
-const buzzWords = require('../array')
+const buzzWords = require('./array')
 
 function resumeChecker(description, resume) {
-    if (res !== String && des !== String) return 'error'
+    if (resume !== String && description !== String) return 'error'
     let res = resume.toLowerCase().split(' ')
     let des = description.toLowerCase().split(' ')
     const resBuzzedWords = []
@@ -23,7 +23,14 @@ function resumeChecker(description, resume) {
     const missingWords = unBuzzedWords.join(', ')
     console.log('percentage match is ' + percentage + '%')
     console.log('missing buzz words include: ' + missingWords)
-    return `percentage match is ${percentage}% and missing buzz words include: ${missingWords}`
+    let result = {
+        Resume: resume,
+        Description: description,
+        Percentage: percentage,
+        MissingWords: missingWords
+    }
+    // return `percentage match is ${percentage}% and missing buzz words include: ${missingWords}`
+    return result
 }
 
 module.exports = resumeChecker
