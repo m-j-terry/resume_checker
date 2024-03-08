@@ -32,8 +32,6 @@ body {
   display: flex; 
   align-items:center;
   flex-direction: column;
-
-  
   h1, h2{
     padding: 2vmax;
   }
@@ -73,8 +71,8 @@ body {
   display:flex;
   flex-direction:column;
   p{
-    font-size:1rem;
-    padding:2rem;
+    font-size:1.3rem;
+    padding:1.5rem;
   }
   .socials{
     display:flex;
@@ -97,13 +95,6 @@ body {
     height: 20vmax;
     margin-right: 3vmax;
   }
-}
-
-.ResultsPage{
-  h1 {
-    font-size: 3rem;
-  }
-
 }
 
 .FormInputComponent {

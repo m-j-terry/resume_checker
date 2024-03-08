@@ -17,7 +17,7 @@ export default function Input(props) {
 		})
 		console.log(result.Percentage)
 		setValues({
-			jobDescription: '',
+			description: '',
 			resume: ''
 		})
 	}, [])
@@ -55,7 +55,8 @@ export default function Input(props) {
         // for (let key in values) {
         //     formData.append(key, values[key])
         // }
-		let checker = await resumeChecker(values.jobDescription, values.resume)
+		let checker = resumeChecker(values.description, values.resume)
+		console.log(checker)
 		setResult(checker)
         // console.log('formData = ' + formData)
 	}
@@ -72,18 +73,19 @@ export default function Input(props) {
                 <form>
 					{inputs.map(input => <FormInput key={input.id} {...input} value={values[input.name]} handleInputChange={handleInputChange} />)}
                 </form>	
-				<button formMethod='dialog' onClick={handleSubmit()}>submit</button>
+				<button onClick={() => handleSubmit()}>submit</button>
 
 			</center>
 		</div>
 	) 
 	} else {
 		return(
-			<div className="opacity">
-				<h2>Your resume is a {props.result.Percentage}% match to the job description.</h2>
-				{props.result.Percentagercentage === 100 ? <h2>You're a great fit! Make sure to include a cover letter to take your application to the next level!</h2> : <h2>These are the words that were missing in your resume: {props.result.MissingWords} <br />Update your resume to include these so that your resume goes even farther!</h2>}
+			<div className="InputPage">
+				<Background />
+				<h2>Your resume is a {result.Percentage}% match to the job description.</h2>
+				{result.Percentage === 100 ? <h2>You're a great fit! Make sure to include a cover letter to take your application to the next level!</h2> : <h2>These are the words that were missing in your resume: {result.MissingWords} <br />Update your resume to include these so that your resume goes even farther!</h2>}
 				<p>Ready to try another job description?</p>
-				<button onClick={setResult({ Resume: null, Description: null, Percentage: null, MissingWords: null })}>reset</button>
+				<button onClick={() => setResult({ Resume: null, Description: null, Percentage: null, MissingWords: null })}>reset</button>
 			</div>	
 		)
 	}

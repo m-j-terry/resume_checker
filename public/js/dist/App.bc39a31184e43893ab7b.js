@@ -20,7 +20,6 @@ module.exports = buzzWords;
 
 const buzzWords = __webpack_require__(/*! ./array */ "./src/array.js");
 function resumeChecker(description, resume) {
-  if (resume !== String && description !== String) return 'error';
   let res = resume.toLowerCase().split(' ');
   let des = description.toLowerCase().split(' ');
   const resBuzzedWords = [];
@@ -216,7 +215,9 @@ root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__
 function About(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "AboutPage"
-  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "about me"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "My name is Michael. I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. ", /*#__PURE__*/React.createElement("br", null), "I recently completed General Assembly's SEI Intensive Bootcamp, "), /*#__PURE__*/React.createElement("p", null, "Follow me on github and connect with me on Linkedin! Want to see more of my projects? Check out my portfolio!"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "about me"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "My name is Michael. I recently completed General Assembly's SEI Intensive Bootcamp. ", /*#__PURE__*/React.createElement("br", null), " I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. "), /*#__PURE__*/React.createElement("p", null, "Did you know that Applicant Tracking Systems (ATS) check your resume for hard-skill buzz words and that by tailoring your resume to reflect your expertise in these skills\u2014literally by making sure to include them directly\u2014you can increase the chances of your application making a good impression? This application checks job descriptions for the buzz words that may be missing from your resume so that you can improve your resume for that application! ", /*#__PURE__*/React.createElement("br", null), " See my ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/m-j-terry/resume_checker"
+  }, "README"), " for a more thorough explanation of the steps for doing this!"), /*#__PURE__*/React.createElement("p", null, "Follow me on github and connect with me on Linkedin! Want to see more of my projects? Check out my portfolio!"), /*#__PURE__*/React.createElement("div", {
     className: "socials"
   }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
     href: "https://github.com/m-j-terry"
@@ -281,7 +282,7 @@ function Input(props) {
     });
     console.log(result.Percentage);
     setValues({
-      jobDescription: '',
+      description: '',
       resume: ''
     });
   }, []);
@@ -316,7 +317,8 @@ function Input(props) {
       // for (let key in values) {
       //     formData.append(key, values[key])
       // }
-      let checker = yield _check_resume__WEBPACK_IMPORTED_MODULE_3___default()(values.jobDescription, values.resume);
+      let checker = _check_resume__WEBPACK_IMPORTED_MODULE_3___default()(values.description, values.resume);
+      console.log(checker);
       setResult(checker);
       // console.log('formData = ' + formData)
     });
@@ -339,14 +341,13 @@ function Input(props) {
       value: values[input.name],
       handleInputChange: handleInputChange
     })))), /*#__PURE__*/React.createElement("button", {
-      formMethod: "dialog",
-      onClick: handleSubmit()
+      onClick: () => handleSubmit()
     }, "submit")));
   } else {
     return /*#__PURE__*/React.createElement("div", {
-      className: "opacity"
-    }, /*#__PURE__*/React.createElement("h2", null, "Your resume is a ", props.result.Percentage, "% match to the job description."), props.result.Percentagercentage === 100 ? /*#__PURE__*/React.createElement("h2", null, "You're a great fit! Make sure to include a cover letter to take your application to the next level!") : /*#__PURE__*/React.createElement("h2", null, "These are the words that were missing in your resume: ", props.result.MissingWords, " ", /*#__PURE__*/React.createElement("br", null), "Update your resume to include these so that your resume goes even farther!"), /*#__PURE__*/React.createElement("p", null, "Ready to try another job description?"), /*#__PURE__*/React.createElement("button", {
-      onClick: setResult({
+      className: "InputPage"
+    }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/React.createElement("h2", null, "Your resume is a ", result.Percentage, "% match to the job description."), result.Percentage === 100 ? /*#__PURE__*/React.createElement("h2", null, "You're a great fit! Make sure to include a cover letter to take your application to the next level!") : /*#__PURE__*/React.createElement("h2", null, "These are the words that were missing in your resume: ", result.MissingWords, " ", /*#__PURE__*/React.createElement("br", null), "Update your resume to include these so that your resume goes even farther!"), /*#__PURE__*/React.createElement("p", null, "Ready to try another job description?"), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setResult({
         Resume: null,
         Description: null,
         Percentage: null,
@@ -617,4 +618,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.dc2ae6b5abbeb8c802fb9d1c602fed31.js.map
+//# sourceMappingURL=App.8e8a4fee377ffdf8ed22a966e7c11bda.js.map

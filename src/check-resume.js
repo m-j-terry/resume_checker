@@ -1,7 +1,6 @@
 const buzzWords = require('./array')
 
 function resumeChecker(description, resume) {
-    if (resume !== String && description !== String) return 'error'
     let res = resume.toLowerCase().split(' ')
     let des = description.toLowerCase().split(' ')
     const resBuzzedWords = []
