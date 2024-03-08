@@ -3,7 +3,7 @@ This project utilizes [Arthur Bernier JR.'s React Starter Kit](https://www.npmjs
 
 Did you know that Applicant Tracking Systems (ATS) check your resume for hard-skill buzz words and that by tailoring your resume to reflect your expertise in these skills—literally by making sure to include them directly—you can increase your application's visibility? This application checks job descriptions for the buzz words that may be missing from your resume so that you can improve your resume for that application! 
 
-Try it [here](https://ats-resume-checker.mjterry.me/)
+## Try it [here](https://ats-resume-checker.mjterry.me/)!
 
 - The application is simple. Copy and paste both the job description and your resume into the input fields.
 - Under the hood, the application takes each of these strings and through a series of steps converts everything to lowercase, removes all punctuation, and turns them each into arrays of words. Then the job description is checked for buzz words—any buzz words are then stored in an array. Then the resume is checked against these words and any missing words (i.e. important ATS words that are in the description but not the resume) are added to another array. A simple calculus reveals what percent of the total buzzwords your resume included, and then the application returns the percentage and any of the words that were missing from your resume!
@@ -21,7 +21,7 @@ Michael Terry (he/him)
 - I am a former Middle School English teacher who recently completed General Assembly's SEI Coding Bootcamp and is searching for new opportunities in tech.
 
 Let's connect!
-- ![/public/img/portfolio.png](https://portfolio-mjterry.netlify.app/)
-- ![/public/img/github](https://github.com/m-j-terry)
-- ![/public/img/Linkedin](https://www.linkedin.com/in/michaeljterry/) 
+- ![LinkedIn](/public/img/portfolio.png) [connect with me](https://portfolio-mjterry.netlify.app/)
+- ![GitHub](/public/img/github) [connect with me](https://github.com/m-j-terry)
+- ![Portfolio](/public/img/Linkedin) [connect with me](https://www.linkedin.com/in/michaeljterry/) 
 
