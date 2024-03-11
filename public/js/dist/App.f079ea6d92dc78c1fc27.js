@@ -56,7 +56,7 @@ function resumeChecker(description, resume) {
   console.log(desBuzzedWords.length);
   console.log(unBuzzedWords);
   let percentage;
-  desBuzzedWords.length === 0 ? percentage = 100 : Math.round(resBuzzedWords.length / desBuzzedWords.length * 100);
+  desBuzzedWords.length === 0 ? percentage = 100 : percentage = Math.round(resBuzzedWords.length / desBuzzedWords.length * 100);
   let missingWords;
   unBuzzedWords.length === 0 ? missingWords = 'none' : missingWords = unBuzzedWords.join(', ');
   console.log('percentage match is ' + percentage + '%');
@@ -332,7 +332,7 @@ function Input(props) {
   }];
   const handleInputChange = e => {
     setValues(_objectSpread(_objectSpread({}, values), {}, {
-      [e.target.name]: e.target.value.replace(/\n/g, ' ')
+      [e.target.name]: e.target.value
     }));
   };
   const handleSubmit = /*#__PURE__*/function () {
@@ -343,7 +343,7 @@ function Input(props) {
       // for (let key in values) {
       //     formData.append(key, values[key])
       // }
-      let checker = _check_resume__WEBPACK_IMPORTED_MODULE_3___default()(values.description, values.resume);
+      let checker = _check_resume__WEBPACK_IMPORTED_MODULE_3___default()(values.description.replace(/\n/g, ' '), values.resume.replace(/\n/g, ' '));
       console.log(checker);
       setResult(checker);
       // console.log('formData = ' + formData)
@@ -645,4 +645,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.9c4326d19e09ca21ba14e27b486b7d3e.js.map
+//# sourceMappingURL=App.3911bf5296ea4ca78184abd4e844e23f.js.map

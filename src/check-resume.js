@@ -36,7 +36,7 @@ function resumeChecker(description, resume) {
     console.log(desBuzzedWords.length)
     console.log(unBuzzedWords)
     let percentage 
-    desBuzzedWords.length === 0 ? percentage = 100 : Math.round((resBuzzedWords.length / desBuzzedWords.length) * 100)
+    desBuzzedWords.length === 0 ? percentage = 100 : percentage = Math.round((resBuzzedWords.length / desBuzzedWords.length) * 100)
 
     let missingWords 
     unBuzzedWords.length === 0 ? missingWords = 'none' : missingWords = unBuzzedWords.join(', ')

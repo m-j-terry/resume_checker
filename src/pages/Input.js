@@ -44,7 +44,7 @@ export default function Input(props) {
     ]
 
 	const handleInputChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value.replace(/\n/g, ' ') }) 
+        setValues({ ...values, [e.target.name]: e.target.value }) 
     }
 
 	const handleSubmit = async (e) => {
@@ -54,7 +54,7 @@ export default function Input(props) {
         // for (let key in values) {
         //     formData.append(key, values[key])
         // }
-		let checker = resumeChecker(values.description, values.resume)
+		let checker = resumeChecker(values.description.replace(/\n/g, ' '), values.resume.replace(/\n/g, ' '))
 		console.log(checker)
 		setResult(checker)
         // console.log('formData = ' + formData)
