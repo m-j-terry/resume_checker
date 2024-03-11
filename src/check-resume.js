@@ -1,8 +1,22 @@
 const buzzWords = require('./array')
 
 function resumeChecker(description, resume) {
-    let res = resume.toLowerCase().split(' ')
-    let des = description.toLowerCase().split(' ')
+    function slidingWindow(string) { // To check for periods and commas between words
+        let text = string.toLowerCase().split('')
+        for (let i = 0; i < text.length; i++){
+            let punctuation = text[i]
+            let space = text[i+1]
+            if ((punctuation === "." || punctuation === ',') && space === " "){
+                text.splice(i, 1)
+            } else if (punctuation === '/' || punctuation === "(" || punctuation === ")"){
+                text.splice(i, 1, ' ')
+            }
+        }
+        text = text.join('').split(' ')
+        return text
+    }
+    let res = slidingWindow(resume)
+    let des = slidingWindow(description)
     const resBuzzedWords = []
     const desBuzzedWords = []
     const unBuzzedWords = []

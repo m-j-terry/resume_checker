@@ -45,7 +45,7 @@ export default function Input(props) {
     ]
 
 	const handleInputChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value }) 
+        setValues({ ...values, [e.target.name]: e.target.value.replace(/\n/g, ' ') }) 
     }
 
 	const handleSubmit = async (e) => {

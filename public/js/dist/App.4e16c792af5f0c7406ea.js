@@ -7,7 +7,7 @@
   \**********************/
 /***/ ((module) => {
 
-const buzzWords = ['react', 'reactjs', 'node', 'nodejs', 'html', 'html5', 'css', 'css3', 'javascript', 'js', 'responsive', 'vue', 'vuejs', 'next', 'nextjs', 'angular', 'angularjs', 'backbone', 'backbonejs', 'front', 'back', 'frontend', 'backend', 'fullstack', 'full', 'mern', 'mernstack', 'ai', 'python', 'typescript', 'ts', 'py', 'restful', 'api', 'webpack', 'java', 'vite', 'loadtesting', 'load', 'testing', 'test', 'tests', 'objectoriented', 'object', 'oriented', 'programming', 'objectorientedprogramming', "oop", 'mongoose', 'mongodb', 'express', "sql", "mysql", "postgres", "postgresql", "django", "docker", 'ruby', "rubyonrails", "golang", "C", "C++", "devops", "linux", "perl", "php"];
+const buzzWords = ['react', 'reactjs', 'react.js', 'node', 'node.js', 'nodejs', 'html', 'html5', 'css', 'css3', 'scss', 'sass', 'tailwind', 'gulp', 'wordpress', 'javascript', 'js', 'responsive', 'vue', 'vuejs', 'vue.js', 'next', 'nextjs', 'next.js', 'angular', 'angularjs', 'angular.js', 'backbone', 'backbonejs', 'backbone.js', 'front', 'back', 'end', 'front-end', 'back-end', 'frontend', 'backend', 'fullstack', 'full', 'stack', 'mern', 'mernstack', 'ai', 'python', 'typescript', 'ts', 'py', 'restful', 'rest', 'restapi', 'api', 'webpack', 'java', 'vite', 'loadtesting', 'load', 'testing', 'test', 'tests', 'objectoriented', 'object-oriented', 'object', 'oriented', 'programming', 'objectorientedprogramming', 'object-oriented-programming', "oop", 'mongoose', 'mongodb', 'express', 'sql', 'mysql', 'postgres', 'postgresql', 'django', 'docker', 'ruby', 'rubyonrails', 'golang', 'C', 'C++', 'devops', 'bit', 'bitbucket', 'pyspark', 'hadoop', 'artifactory', 'jenkins', 'linux', 'perl', 'php', 'sybase', 'snowflake', 'etl', 'alloy', 'ios', 'git', 'flask', 'gsap', 'pixijs', 'pixi.js', 'aws', 's3', 'lambda'];
 module.exports = buzzWords;
 
 /***/ }),
@@ -20,8 +20,23 @@ module.exports = buzzWords;
 
 const buzzWords = __webpack_require__(/*! ./array */ "./src/array.js");
 function resumeChecker(description, resume) {
-  let res = resume.toLowerCase().split(' ');
-  let des = description.toLowerCase().split(' ');
+  function slidingWindow(string) {
+    // To check for periods and commas between words
+    let text = string.toLowerCase().split('');
+    for (let i = 0; i < text.length; i++) {
+      let punctuation = text[i];
+      let space = text[i + 1];
+      if ((punctuation === "." || punctuation === ',') && space === " ") {
+        text.splice(i, 1);
+      } else if (punctuation === '/' || punctuation === "(" || punctuation === ")") {
+        text.splice(i, 1, ' ');
+      }
+    }
+    text = text.join('').split(' ');
+    return text;
+  }
+  let res = slidingWindow(resume);
+  let des = slidingWindow(description);
   const resBuzzedWords = [];
   const desBuzzedWords = [];
   const unBuzzedWords = [];
@@ -69,9 +84,16 @@ module.exports = resumeChecker;
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 function Background(props) {
+  let random = Math.floor(Math.random() * 2) + 1;
+  let background;
+  if (random === 1) {
+    background = _array__WEBPACK_IMPORTED_MODULE_0___default().slice(0, 50);
+  } else if (random === 2) {
+    background = _array__WEBPACK_IMPORTED_MODULE_0___default().slice(50, 100);
+  }
   return /*#__PURE__*/React.createElement("div", {
     className: "BackgroundComponent"
-  }, /*#__PURE__*/React.createElement("center", null, _array__WEBPACK_IMPORTED_MODULE_0___default().map(word => /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement("center", null, background.map(word => /*#__PURE__*/React.createElement("h3", {
     key: word,
     className: "word"
   }, word))));
@@ -306,7 +328,7 @@ function Input(props) {
   }];
   const handleInputChange = e => {
     setValues(_objectSpread(_objectSpread({}, values), {}, {
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value.replace(/\n/g, ' ')
     }));
   };
   const handleSubmit = /*#__PURE__*/function () {
@@ -619,4 +641,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.3eb3d939418de6ed095d0df7df31d5ca.js.map
+//# sourceMappingURL=App.4f04bd1dc2df8aae3727f91a86b9cbe9.js.map

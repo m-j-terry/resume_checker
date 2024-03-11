@@ -200,7 +200,7 @@ $position-left: 5vw, 10vw, 15vw, 20vw, 25vw, 30vw, 35vw, 40vw, 45vw, 50vw, 55vw,
   position:fixed;
   top: 0; left: 0;
   z-index: -1;
-  @include animate-words(66); 
+  @include animate-words(50); 
 
   .word {
     color: grey;
