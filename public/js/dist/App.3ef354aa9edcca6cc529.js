@@ -52,8 +52,13 @@ function resumeChecker(description, resume) {
       unBuzzedWords.push(desBuzzedWords[i]);
     }
   }
-  let percentage = Math.round(resBuzzedWords.length / desBuzzedWords.length * 100);
-  const missingWords = unBuzzedWords.join(', ');
+  console.log(resBuzzedWords.length);
+  console.log(desBuzzedWords.length);
+  console.log(unBuzzedWords);
+  let percentage;
+  desBuzzedWords.length === 0 ? percentage = 100 : Math.round(resBuzzedWords.length / desBuzzedWords.length * 100);
+  let missingWords;
+  unBuzzedWords.length === 0 ? missingWords = 'none' : missingWords = unBuzzedWords.join(', ');
   console.log('percentage match is ' + percentage + '%');
   console.log('missing buzz words include: ' + missingWords);
   let result = {
@@ -237,7 +242,7 @@ root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__
 function About(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "AboutPage"
-  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "about me"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "My name is Michael. I recently completed General Assembly's SEI Intensive Bootcamp. ", /*#__PURE__*/React.createElement("br", null), " I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. "), /*#__PURE__*/React.createElement("p", null, "Did you know that Applicant Tracking Systems (ATS) check your resume for hard-skill buzz words and that by tailoring your resume to reflect your expertise in these skills\u2014literally by making sure to include them directly\u2014you can increase the chances of your application making a good impression? This application checks job descriptions for the buzz words that may be missing from your resume so that you can improve your resume for that application! ", /*#__PURE__*/React.createElement("br", null), " See my ", /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(_components_Backround__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "about me"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "My name is Michael Terry. I am a software engineer and recent graduate of General Assembly's SEI Intensive Bootcamp. ", /*#__PURE__*/React.createElement("br", null), " I am a former educator looking to break into the software engineering industry. I designed this application to help engineers like myself put their best foot forward on applications. "), /*#__PURE__*/React.createElement("p", null, "Did you know that Applicant Tracking Systems (ATS) check your resume for hard-skill buzz words and that by tailoring your resume to reflect your expertise in these skills\u2014literally by making sure to include them directly\u2014you can increase the chances of your application making a good impression? This application checks job descriptions for the buzz words that may be missing from your resume so that you can improve your resume for that application! ", /*#__PURE__*/React.createElement("br", null), " See my ", /*#__PURE__*/React.createElement("a", {
     href: "https://github.com/m-j-terry/resume_checker"
   }, "README"), " for a more thorough explanation of the steps for doing this!"), /*#__PURE__*/React.createElement("p", null, "Follow me on github and connect with me on Linkedin! Want to see more of my projects? Check out my portfolio!"), /*#__PURE__*/React.createElement("div", {
     className: "socials"
@@ -302,7 +307,6 @@ function Input(props) {
       Percentage: null,
       MissingWords: null
     });
-    console.log(result.Percentage);
     setValues({
       description: '',
       resume: ''
@@ -641,4 +645,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.4f04bd1dc2df8aae3727f91a86b9cbe9.js.map
+//# sourceMappingURL=App.9c4326d19e09ca21ba14e27b486b7d3e.js.map

@@ -15,7 +15,6 @@ export default function Input(props) {
 			Percentage: null,
 			MissingWords: null 
 		})
-		console.log(result.Percentage)
 		setValues({
 			description: '',
 			resume: ''
