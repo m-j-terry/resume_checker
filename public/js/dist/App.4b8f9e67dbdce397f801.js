@@ -336,6 +336,7 @@ function Input(props) {
     }, "ATS Resume Checker"), /*#__PURE__*/React.createElement("h2", {
       className: "heading"
     }, "Paste your resume check what percent it matches with the listing's job description.")), /*#__PURE__*/React.createElement("form", null, inputs.map(input => /*#__PURE__*/React.createElement(_components_FormInput__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
+      className: "FormInput",
       key: input.id
     }, input, {
       value: values[input.name],
@@ -618,4 +619,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.8e8a4fee377ffdf8ed22a966e7c11bda.js.map
+//# sourceMappingURL=App.3eb3d939418de6ed095d0df7df31d5ca.js.map

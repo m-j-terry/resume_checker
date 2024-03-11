@@ -71,7 +71,7 @@ export default function Input(props) {
 					<h2 className="heading">Paste your resume check what percent it matches with the listing's job description.</h2>
 				</div>
                 <form>
-					{inputs.map(input => <FormInput key={input.id} {...input} value={values[input.name]} handleInputChange={handleInputChange} />)}
+					{inputs.map(input => <FormInput className="FormInput" key={input.id} {...input} value={values[input.name]} handleInputChange={handleInputChange} />)}
                 </form>	
 				<button onClick={() => handleSubmit()}>submit</button>
 

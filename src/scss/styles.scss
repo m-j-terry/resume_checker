@@ -27,6 +27,27 @@ body {
   }
 }
 
+.FormInputComponent {
+  display: flex; 
+  flex-direction:column;
+  .label{
+    font-size: 2rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color:rgb(51, 184, 51);
+  }
+  textarea {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .FormInputComponent {
+    max-width:49vw;
+  }
+}
+
+
+
 .InputPage {
   z-index:1;
   display: flex; 
@@ -46,7 +67,10 @@ body {
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
-  }
+    .FormInput{
+      max-width: 70vw;
+    }
+  
   button{
     height:2rem;
     width:5rem;
@@ -60,6 +84,21 @@ body {
     color: white;
     background-color:black;
     text-transform:uppercase;
+  }
+}
+}
+
+@media only screen and (max-width: 1000px) {
+  .InputPage{
+    z-index:1;
+    display: flex; 
+    align-items:center;
+    flex-direction: column;
+    form {
+      display: flex; 
+      flex-direction: column;
+      max-width: 70vw;
+    }
   }
 }
 
@@ -94,19 +133,6 @@ body {
     width: 20vmax;
     height: 20vmax;
     margin-right: 3vmax;
-  }
-}
-
-.FormInputComponent {
-  display: flex; 
-  flex-direction:column;
-  .label{
-    font-size: 2rem;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    color:rgb(51, 184, 51);
-  }
-  textarea {
-    font-size: 1rem;
   }
 }
 
